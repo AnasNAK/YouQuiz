@@ -38,4 +38,10 @@ public class Question {
 
     @ManyToOne
     private Subject subject;
+
+    @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
+    private List<AnswerQuestion> answerQuestions;
+
+    @OneToMany(mappedBy = "question" ,fetch = FetchType.LAZY)
+    private List<AnswerValidation> answerValidations;
 }

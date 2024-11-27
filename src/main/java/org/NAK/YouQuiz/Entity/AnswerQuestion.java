@@ -4,20 +4,20 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.NAK.YouQuiz.Entity.Embedded.QuestionQuizKey;
+import org.NAK.YouQuiz.Entity.Embedded.AnswerQuestionKey;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "question_quiz")
-public class QuestionQuiz {
+@Table(name = "answer_question")
+public class AnswerQuestion {
 
     @EmbeddedId
-    private QuestionQuizKey id;
+    private AnswerQuestionKey id;
 
-    @Column(name = "timer")
-    private int timer;
+    @Column(name = "point")
+    private double point;
 
     @ManyToOne
     @MapsId("questionId")
@@ -25,7 +25,10 @@ public class QuestionQuiz {
     private Question question;
 
     @ManyToOne
-    @MapsId("quizId")
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
+    @MapsId("answerId")
+    @JoinColumn(name = "answer_id")
+    private Answer answer;
+
+
+
 }

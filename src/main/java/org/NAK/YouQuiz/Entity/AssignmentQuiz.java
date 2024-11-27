@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -37,10 +39,14 @@ public class AssignmentQuiz {
     @Column(name = "result")
     private double result;
 
-
     @ManyToOne
+    @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
     @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
+
+    @ManyToMany(mappedBy = "assignmentQuizzes")
+    private Set<AnswerValidation> answerValidations = new HashSet<>();
 }
