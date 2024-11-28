@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:15.3
+    container_name: postgresql
+    networks:
+      - app-network
+    environment:
+      POSTGRES_DB: youquiz_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anas
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  youquiz_app:
+    build: .
+    container_name: youquiz_app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/youquiz_db
+      SPRING_DATASOURCE_USER: postgres
+      SPRING_DATASOURCE_PASSWORD: anas
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target:/app
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

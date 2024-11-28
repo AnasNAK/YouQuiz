@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.NAK.YouQuiz.Enum.QuestionType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,8 +41,8 @@ public class Question {
     private Subject subject;
 
     @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
-    private List<AnswerQuestion> answerQuestions;
+    private List<AnswerQuestion> answerQuestions = new ArrayList<>();
 
     @OneToMany(mappedBy = "question" ,fetch = FetchType.LAZY)
-    private List<AnswerValidation> answerValidations;
+    private List<AnswerValidation> answerValidations = new ArrayList<>();
 }

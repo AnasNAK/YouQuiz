@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -21,5 +22,5 @@ public class Teacher extends User {
     private String specialty;
 
     @OneToMany(mappedBy = "teacher" ,cascade = CascadeType.ALL)
-    private List<Quiz> quizzes ;
+    private List<Quiz> quizzes = new ArrayList<>();
 }

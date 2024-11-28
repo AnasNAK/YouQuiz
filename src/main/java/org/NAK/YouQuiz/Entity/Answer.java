@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,8 +22,8 @@ public class Answer {
     private String answer;
 
     @OneToMany(mappedBy = "answer" ,fetch = FetchType.LAZY)
-    private List<AnswerQuestion> answerQuestions;
+    private List<AnswerQuestion> answerQuestions = new ArrayList<>();
 
     @OneToMany(mappedBy = "answer" ,fetch = FetchType.LAZY)
-    private List<AnswerValidation> answerValidations;
+    private List<AnswerValidation> answerValidations = new ArrayList<>();
 }

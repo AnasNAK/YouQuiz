@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,5 +24,5 @@ public class Student extends User {
     private LocalDate registerDate;
 
     @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<AssignmentQuiz> assignmentQuizzes;
+    private List<AssignmentQuiz> assignmentQuizzes = new ArrayList<>();
 }

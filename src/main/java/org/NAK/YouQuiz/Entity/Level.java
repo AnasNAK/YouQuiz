@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,5 +30,5 @@ public class Level {
     private double minPoints;
 
     @OneToMany(mappedBy = "level")
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 }
