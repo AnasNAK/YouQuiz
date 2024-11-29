@@ -8,4 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LevelDTO {
+
+
+    private String description;
+
+    private double maxPoints;
+
+    private double minPoints;
+
+
 }

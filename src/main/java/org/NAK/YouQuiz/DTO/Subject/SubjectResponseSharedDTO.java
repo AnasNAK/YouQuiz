@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubjectResponseSharedDTO {
+
     private Long id;
 
     private String title;

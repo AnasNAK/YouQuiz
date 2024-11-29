@@ -32,7 +32,7 @@ public class Question {
     private QuestionType questionType;
 
     @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
-    private List<QuestionQuiz> questionQuizzes;
+    private List<QuestionQuiz> questionQuizzes = new ArrayList<>();
 
     @ManyToOne
     private Level level;

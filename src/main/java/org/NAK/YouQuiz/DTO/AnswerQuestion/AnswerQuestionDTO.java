@@ -8,4 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnswerQuestionDTO {
+
+    private Long questionId;
+
+    private Long answerId;
+
+    private double point;
+
+
 }

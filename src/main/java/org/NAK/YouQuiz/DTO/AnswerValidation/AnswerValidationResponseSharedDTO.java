@@ -8,4 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnswerValidationResponseSharedDTO {
+
+    private Long id;
+
+    private double points;
 }

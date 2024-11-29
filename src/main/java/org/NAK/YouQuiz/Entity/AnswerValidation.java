@@ -30,12 +30,7 @@ public class AnswerValidation {
     @JoinColumn(name = "question_id")
     private Question question;
 
-    @ManyToMany
-    @JoinTable(
-            name = "answer_validation_assignment",
-            joinColumns = @JoinColumn(name = "answer_validation_id"),
-            inverseJoinColumns = @JoinColumn(name = "assignment_quiz_id")
-    )
-    private Set<AssignmentQuiz> assignmentQuizzes = new HashSet<>();
-
+    @ManyToOne
+    @JoinColumn(name = "assignment_quiz_id")
+    private AssignmentQuiz assignmentQuiz;
 }

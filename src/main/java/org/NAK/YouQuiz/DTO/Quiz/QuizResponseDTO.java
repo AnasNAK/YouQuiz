@@ -3,7 +3,11 @@ package org.NAK.YouQuiz.DTO.Quiz;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseSharedDTO;
+import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseSharedDTO;
 import org.NAK.YouQuiz.DTO.Teacher.TeacherDTO;
+
+import java.util.List;
 
 
 @Data
@@ -19,6 +23,6 @@ public class QuizResponseDTO {
     private int maxAttempts;
     private String instruction;
     private TeacherDTO teacher;
-//    private List<AssignmentQuizSharedDTO> assignmentQuizzes ;
-//    private List<QuestionQuizResponseSharedDTO> questionQuizzes
+    private List<AssignmentQuizResponseSharedDTO> assignmentQuizzes ;
+    private List<QuestionQuizResponseSharedDTO> questionQuizzes;
 }

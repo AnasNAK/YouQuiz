@@ -12,8 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 public class SubjectDTO {
 
-    private Long id;
-
     private String title;
 
     private Subject parent;

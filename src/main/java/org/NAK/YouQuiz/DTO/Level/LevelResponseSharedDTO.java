@@ -8,4 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LevelResponseSharedDTO {
+
+    private Long id;
+
+    private String description;
+
+    private double maxPoints;
+
+    private double minPoints;
 }
