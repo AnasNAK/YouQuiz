@@ -6,7 +6,7 @@ import org.NAK.YouQuiz.DTO.Answer.AnswerResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Answer;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" , uses = {AnswerValidationMapper.class, AnswerQuestionMapper.class})
+@Mapper(componentModel = "spring" , uses = { AnswerQuestionMapper.class})
 public interface AnswerMapper {
     Answer toAnswer(AnswerDTO answerDTO);
     AnswerResponseSharedDTO toAnswerResponseSharedDTO(Answer answer);

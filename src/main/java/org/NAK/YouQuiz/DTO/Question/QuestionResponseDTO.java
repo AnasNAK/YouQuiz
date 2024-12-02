@@ -19,7 +19,7 @@ import java.util.List;
 public class QuestionResponseDTO {
     private Long id;
 
-    private String question;
+    private String questionDesc;
 
     private int answers;
 

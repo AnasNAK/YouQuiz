@@ -11,7 +11,7 @@ import org.NAK.YouQuiz.Enum.QuestionType;
 @AllArgsConstructor
 public class QuestionDTO {
 
-    private String question;
+    private String questionDesc;
 
     private int answers;
 

@@ -17,7 +17,9 @@ public class SubjectResponseDTO {
 
     private String title;
 
-    private SubjectResponseDTO parent;
+    private SubjectResponseSharedDTO parent;
+
+    private List<SubjectResponseDTO> subSubjects;
 
     private List<QuestionResponseSharedDTO> questions ;
 

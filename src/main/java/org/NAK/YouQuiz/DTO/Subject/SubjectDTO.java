@@ -3,9 +3,7 @@ package org.NAK.YouQuiz.DTO.Subject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.NAK.YouQuiz.Entity.Subject;
 
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,5 +12,5 @@ public class SubjectDTO {
 
     private String title;
 
-    private Subject parent;
+    private Long parentId;
 }

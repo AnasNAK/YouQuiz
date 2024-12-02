@@ -11,7 +11,7 @@ import org.NAK.YouQuiz.Enum.QuestionType;
 public class QuestionResponseSharedDTO {
     private Long id;
 
-    private String question;
+    private String questionDesc;
 
     private int answers;
 

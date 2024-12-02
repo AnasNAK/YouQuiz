@@ -6,7 +6,7 @@ import org.NAK.YouQuiz.DTO.Quiz.QuizResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Quiz;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" ,uses = {TeacherMapper.class , AnswerMapper.class , QuestionQuizMapper.class})
+@Mapper(componentModel = "spring" ,uses = {TeacherMapper.class , AnswerMapper.class })
 public interface QuizMapper {
 
     Quiz toQuiz(QuizDTO quizDTO);

@@ -19,8 +19,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "question")
-    private String question;
+    @Column(name = "question_description")
+    private String questionDesc;
 
     @Column(name = "answers")
     private int answers;
