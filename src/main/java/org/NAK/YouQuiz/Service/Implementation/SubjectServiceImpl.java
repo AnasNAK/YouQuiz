@@ -65,4 +65,10 @@ public class SubjectServiceImpl implements SubjectService {
                 .map(subjectMapper::toSubjectResponseDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Subject getSubjectEntityById(Long id) {
+        return subjectRepository.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("Subject with id " + id + " not found"));
+    }
 }

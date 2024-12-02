@@ -6,7 +6,7 @@ import org.NAK.YouQuiz.DTO.Subject.SubjectResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Subject;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" ,uses = {QuestionMapper.class})
+@Mapper(componentModel = "spring" )
 public interface SubjectMapper {
 
     Subject toSubject(SubjectDTO subjectDTO);
