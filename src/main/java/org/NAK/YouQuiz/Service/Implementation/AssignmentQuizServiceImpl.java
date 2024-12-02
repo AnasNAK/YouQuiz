@@ -61,6 +61,7 @@ public class AssignmentQuizServiceImpl implements AssignmentQuizService {
 
         AssignmentQuiz savedQuiz = assignmentQuizMapper.toAssignmentQuiz(assignmentQuizDTO);
 
+        savedQuiz.setId(id);
         savedQuiz.setQuiz(quiz);
         savedQuiz.setStudent(student);
 
@@ -84,5 +85,11 @@ public class AssignmentQuizServiceImpl implements AssignmentQuizService {
                 .stream()
                 .map(assignmentQuizMapper::toAssignmentQuizResponseDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public AssignmentQuiz getAssignmentQuizEntityById(Long id) {
+        return assignmentQuizRepository.findById(id)
+                .orElseThrow(()->new EntityNotFoundException("assignment with id :"+id+ "not found "));
     }
 }

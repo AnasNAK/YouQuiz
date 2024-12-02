@@ -56,6 +56,7 @@ public class QuestionServiceImpl implements QuestionService {
         Subject existedSubject = subjectService.getSubjectEntityById(questionDTO.getSubjectId());
 
         Question savedQuestion = questionMapper.toQuestion(questionDTO);
+        savedQuestion.setId(id);
         savedQuestion.setLevel(existedLevel);
         savedQuestion.setSubject(existedSubject);
 
