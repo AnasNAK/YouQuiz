@@ -31,16 +31,18 @@ public class AnswerQuestionServiceImpl implements AnswerQuestionService {
     private final QuestionService questionService;
 
     @Override
-    public AnswerQuestionResponseSharedDTO createAnswerQuestion(AnswerQuestionDTO answerQuestionDTO) {
+    public AnswerQuestionResponseDTO createAnswerQuestion(AnswerQuestionDTO answerQuestionDTO) {
+
         Question existedQuestion = questionService.getQuestionEntityByID(answerQuestionDTO.getQuestionId());
 
         Answer existedAnswer = answerService.getAnswerEntityById(answerQuestionDTO.getAnswerId());
 
         AnswerQuestion savedAnswerQuestion = answerQuestionMapper.toAnswerQuestion(answerQuestionDTO);
-        savedAnswerQuestion.setQuestion(existedQuestion);
-        savedAnswerQuestion.setAnswer(existedAnswer);
-        answerQuestionRepository.save(savedAnswerQuestion);
-        return answerQuestionMapper.toAnswerQuestionResponseSharedDTO(savedAnswerQuestion);
+
+     AnswerQuestion created =    answerQuestionRepository.save(savedAnswerQuestion);
+
+
+        return answerQuestionMapper.toAnswerQuestionResponseDTO(created);
     }
 
     @Override

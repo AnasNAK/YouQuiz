@@ -62,4 +62,10 @@ public class TeacherServiceImpl implements TeacherService {
                 .map(teacherMapper::toTeacherDTO)
                 .orElseThrow(()-> new EntityNotFoundException("Teacher with id " + id + " not found"));
     }
+
+    @Override
+    public Teacher getTeacherEntityById(Long id) {
+        return teacherRepository.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("Teacher with id " + id + " not found"));
+    }
 }

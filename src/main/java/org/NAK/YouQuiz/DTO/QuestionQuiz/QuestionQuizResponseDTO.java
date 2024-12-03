@@ -10,9 +10,6 @@ import org.NAK.YouQuiz.DTO.Quiz.QuizResponseSharedDTO;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionQuizResponseDTO {
-    private Long questionId;
-
-    private Long quizId;
 
     private QuestionResponseSharedDTO question;
 

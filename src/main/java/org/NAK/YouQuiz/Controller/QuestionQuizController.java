@@ -1,6 +1,7 @@
 package org.NAK.YouQuiz.Controller;
 
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizDTO;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseDTO;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseSharedDTO;
@@ -8,7 +9,6 @@ import org.NAK.YouQuiz.Entity.Embedded.QuestionQuizKey;
 import org.NAK.YouQuiz.Service.Contract.QuestionQuizService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +24,8 @@ public class QuestionQuizController {
     }
 
     @PostMapping
-    public ResponseEntity<QuestionQuizResponseSharedDTO> createQuestionQuiz(@RequestBody QuestionQuizDTO questionQuizDTO) {
-        QuestionQuizResponseSharedDTO QuestionQuiz = questionQuizService.createQuestionQuiz(questionQuizDTO);
+    public ResponseEntity<QuestionQuizResponseDTO> createQuestionQuiz(@Valid @RequestBody QuestionQuizDTO questionQuizDTO) {
+        QuestionQuizResponseDTO QuestionQuiz = questionQuizService.createQuestionQuiz(questionQuizDTO);
         return new ResponseEntity<>(QuestionQuiz, HttpStatus.CREATED);
     }
 
@@ -44,7 +44,7 @@ public class QuestionQuizController {
 
     @PatchMapping("/{quizId}/{questionId}")
     public ResponseEntity<QuestionQuizResponseDTO> updateQuestionQuiz(@PathVariable Long quizId, @PathVariable Long questionId
-                                                                    , @RequestBody QuestionQuizDTO questionQuizDTO) {
+                                                                    ,@Valid @RequestBody QuestionQuizDTO questionQuizDTO) {
         questionQuizDTO.setQuizId(quizId);
         questionQuizDTO.setQuestionId(questionId);
         QuestionQuizResponseDTO questionQuiz = questionQuizService.updateQuestionQuiz(questionQuizDTO);

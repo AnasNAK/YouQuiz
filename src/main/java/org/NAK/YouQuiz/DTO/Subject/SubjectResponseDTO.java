@@ -19,7 +19,7 @@ public class SubjectResponseDTO {
 
     private SubjectResponseSharedDTO parent;
 
-    private List<SubjectResponseDTO> subSubjects;
+    private List<SubjectResponseSharedDTO> subSubjects;
 
     private List<QuestionResponseSharedDTO> questions ;
 

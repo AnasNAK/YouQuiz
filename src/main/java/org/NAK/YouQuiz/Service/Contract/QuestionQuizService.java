@@ -9,7 +9,7 @@ import org.NAK.YouQuiz.Entity.QuestionQuiz;
 import java.util.List;
 
 public interface QuestionQuizService {
-    QuestionQuizResponseSharedDTO createQuestionQuiz(QuestionQuizDTO questionQuizDTO);
+    QuestionQuizResponseDTO createQuestionQuiz(QuestionQuizDTO questionQuizDTO);
     QuestionQuizResponseDTO getQuestionQuiz(QuestionQuizKey questionQuizKey);
     QuestionQuizResponseDTO updateQuestionQuiz(QuestionQuizDTO questionQuizDTO);
     void deleteQuestionQuiz(QuestionQuizKey questionQuizKey);

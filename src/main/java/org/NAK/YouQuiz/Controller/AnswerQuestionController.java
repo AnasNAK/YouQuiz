@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.AnswerQuestion.AnswerQuestionDTO;
 import org.NAK.YouQuiz.DTO.AnswerQuestion.AnswerQuestionResponseDTO;
 import org.NAK.YouQuiz.DTO.AnswerQuestion.AnswerQuestionResponseSharedDTO;
@@ -23,8 +24,8 @@ public class AnswerQuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<AnswerQuestionResponseSharedDTO> createAnswerQuestion(@RequestBody AnswerQuestionDTO answerQuestionDTO) {
-        AnswerQuestionResponseSharedDTO answerQuestion = answerQuestionService.createAnswerQuestion(answerQuestionDTO);
+    public ResponseEntity<AnswerQuestionResponseDTO> createAnswerQuestion(@Valid @RequestBody AnswerQuestionDTO answerQuestionDTO) {
+        AnswerQuestionResponseDTO answerQuestion = answerQuestionService.createAnswerQuestion(answerQuestionDTO);
         return new ResponseEntity<>(answerQuestion, HttpStatus.CREATED);
     }
     @GetMapping("/{questionId}/{AnswerId}")
@@ -41,7 +42,7 @@ public class AnswerQuestionController {
     }
 
     @PatchMapping("/{questionId}/{AnswerId}")
-    public ResponseEntity<AnswerQuestionResponseDTO> updateAnswerQuestion(@PathVariable Long questionId, @PathVariable Long AnswerId, @RequestBody AnswerQuestionDTO answerQuestionDTO) {
+    public ResponseEntity<AnswerQuestionResponseDTO> updateAnswerQuestion(@PathVariable Long questionId, @PathVariable Long AnswerId,@Valid @RequestBody AnswerQuestionDTO answerQuestionDTO) {
 
         answerQuestionDTO.setAnswerId(AnswerId);
         answerQuestionDTO.setQuestionId(questionId);

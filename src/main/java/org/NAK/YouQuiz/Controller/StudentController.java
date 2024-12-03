@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.Student.StudentDTO;
 import org.NAK.YouQuiz.Service.Contract.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,13 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO) {
+    public ResponseEntity<StudentDTO> createStudent(@Valid @RequestBody StudentDTO studentDTO) {
         StudentDTO student = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(student , HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<StudentDTO> updateStudent(@PathVariable Long id, @RequestBody StudentDTO studentDTO) {
+    public ResponseEntity<StudentDTO> updateStudent(@PathVariable Long id,@Valid @RequestBody StudentDTO studentDTO) {
         StudentDTO student = studentService.updateStudent(id, studentDTO);
         return new ResponseEntity<>(student , HttpStatus.OK);
     }

@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizDTO;
 import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseDTO;
 import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseSharedDTO;
@@ -21,7 +22,7 @@ public class AssignmentQuizController {
     }
 
     @PostMapping
-    public ResponseEntity<AssignmentQuizResponseSharedDTO> createAssignmentQuiz(@RequestBody AssignmentQuizDTO assignmentQuizDTO) {
+    public ResponseEntity<AssignmentQuizResponseSharedDTO> createAssignmentQuiz(@Valid @RequestBody AssignmentQuizDTO assignmentQuizDTO) {
 
         AssignmentQuizResponseSharedDTO assignmentQuiz = assignmentQuizService.createAssignmentQuiz(assignmentQuizDTO);
         return new ResponseEntity<>(assignmentQuiz, HttpStatus.CREATED);
@@ -40,7 +41,7 @@ public class AssignmentQuizController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<AssignmentQuizResponseDTO> updateAssignmentQuiz(@PathVariable Long id, @RequestBody AssignmentQuizDTO assignmentQuizDTO) {
+    public ResponseEntity<AssignmentQuizResponseDTO> updateAssignmentQuiz(@PathVariable Long id,@Valid @RequestBody AssignmentQuizDTO assignmentQuizDTO) {
 
         AssignmentQuizResponseDTO assignmentQuiz = assignmentQuizService.updateAssignmentQuiz(id, assignmentQuizDTO);
         return new ResponseEntity<>(assignmentQuiz, HttpStatus.ACCEPTED);

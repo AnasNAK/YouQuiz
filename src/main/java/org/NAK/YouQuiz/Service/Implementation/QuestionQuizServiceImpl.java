@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizDTO;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseDTO;
-import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Embedded.QuestionQuizKey;
 import org.NAK.YouQuiz.Entity.Question;
 import org.NAK.YouQuiz.Entity.QuestionQuiz;
@@ -32,7 +31,7 @@ public class QuestionQuizServiceImpl implements QuestionQuizService {
     private final QuizService quizService;
 
     @Override
-    public QuestionQuizResponseSharedDTO createQuestionQuiz(QuestionQuizDTO questionQuizDTO) {
+    public QuestionQuizResponseDTO createQuestionQuiz(QuestionQuizDTO questionQuizDTO) {
 
         Question existedQuestion = questionService.getQuestionEntityByID(questionQuizDTO.getQuestionId());
 
@@ -44,7 +43,7 @@ public class QuestionQuizServiceImpl implements QuestionQuizService {
 
         questionQuizRepository.save(savedQuestionQuiz);
 
-        return questionQuizMapper.toQuestionQuizResponseSharedDTO(savedQuestionQuiz);
+        return questionQuizMapper.toQuestionQuizResponseDTO(savedQuestionQuiz);
 
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface AnswerQuestionService {
 
-    AnswerQuestionResponseSharedDTO createAnswerQuestion(AnswerQuestionDTO answerQuestionDTO);
+    AnswerQuestionResponseDTO createAnswerQuestion(AnswerQuestionDTO answerQuestionDTO);
     AnswerQuestionResponseDTO updateAnswerQuestion(AnswerQuestionDTO answerQuestionDTO);
     void deleteAnswerQuestion(AnswerQuestionKey answerQuestionKey);
     AnswerQuestionResponseDTO getAnswerQuestion(AnswerQuestionKey answerQuestionKey);

@@ -11,10 +11,6 @@ import org.NAK.YouQuiz.DTO.Question.QuestionResponseSharedDTO;
 @AllArgsConstructor
 public class AnswerQuestionResponseDTO {
 
-    private Long questionId;
-
-    private Long answerId;
-
     private double point;
 
     private QuestionResponseSharedDTO question;

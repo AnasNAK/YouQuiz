@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.Level.LevelDTO;
 import org.NAK.YouQuiz.DTO.Level.LevelResponseDTO;
 import org.NAK.YouQuiz.DTO.Level.LevelResponseSharedDTO;
@@ -20,7 +21,7 @@ public class LevelController {
     }
 
     @PostMapping
-    public ResponseEntity<LevelResponseSharedDTO> createLevel(@RequestBody LevelDTO levelDTO) {
+    public ResponseEntity<LevelResponseSharedDTO> createLevel(@Valid @RequestBody LevelDTO levelDTO) {
         LevelResponseSharedDTO level = levelService.createLevel(levelDTO);
         return new ResponseEntity<>(level, HttpStatus.CREATED);
     }
@@ -38,7 +39,7 @@ public class LevelController {
         return new ResponseEntity<>(levels, HttpStatus.OK);
     }
     @PatchMapping("/{id}")
-    public ResponseEntity<LevelResponseDTO> updateLevel(@PathVariable Long id, @RequestBody LevelDTO levelDTO) {
+    public ResponseEntity<LevelResponseDTO> updateLevel(@PathVariable Long id,@Valid @RequestBody LevelDTO levelDTO) {
         LevelResponseDTO level = levelService.updateLevel(id, levelDTO);
         return new ResponseEntity<>(level, HttpStatus.ACCEPTED);
     }

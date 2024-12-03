@@ -6,9 +6,11 @@ import org.NAK.YouQuiz.DTO.Quiz.QuizDTO;
 import org.NAK.YouQuiz.DTO.Quiz.QuizResponseDTO;
 import org.NAK.YouQuiz.DTO.Quiz.QuizResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Quiz;
+import org.NAK.YouQuiz.Entity.Teacher;
 import org.NAK.YouQuiz.Mapper.QuizMapper;
 import org.NAK.YouQuiz.Repository.QuizRepository;
 import org.NAK.YouQuiz.Service.Contract.QuizService;
+import org.NAK.YouQuiz.Service.Contract.TeacherService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +24,15 @@ public class QuizServiceImpl implements QuizService {
 
     private final QuizMapper quizMapper;
 
+    private final TeacherService teacherService;
+
     @Override
     public QuizResponseSharedDTO createQuiz(QuizDTO quizDTO) {
 
+        Teacher teacher = teacherService.getTeacherEntityById(quizDTO.getTeacherId());
+
         Quiz savedQuiz = quizMapper.toQuiz(quizDTO);
+        savedQuiz.setTeacher(teacher);
         Quiz quiz = quizRepository.save(savedQuiz);
         return quizMapper.toQuizResponseSharedDTO(quiz);
     }
@@ -34,7 +41,10 @@ public class QuizServiceImpl implements QuizService {
     public QuizResponseDTO updateQuiz(Long id,QuizDTO quizDTO) {
         Quiz existingQuiz = quizRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Quiz with id " + id + " not found"));
 
+        Teacher teacher = teacherService.getTeacherEntityById(quizDTO.getTeacherId());
+
         Quiz savedQuiz = quizMapper.toQuiz(quizDTO);
+        savedQuiz.setTeacher(teacher);
         savedQuiz.setId(id);
         Quiz updatedQuiz = quizRepository.save(savedQuiz);
         return quizMapper.toQuizResponseDTO(updatedQuiz);

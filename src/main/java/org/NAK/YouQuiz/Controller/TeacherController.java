@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.Teacher.TeacherDTO;
 import org.NAK.YouQuiz.Service.Contract.TeacherService;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public TeacherController(TeacherService teacherService) {
 }
 
 @PostMapping
-    public ResponseEntity<TeacherDTO> createTeacher(@RequestBody TeacherDTO teacherDTO) {
+    public ResponseEntity<TeacherDTO> createTeacher(@Valid @RequestBody TeacherDTO teacherDTO) {
     TeacherDTO teacher = teacherService.createTeacher(teacherDTO);
     return new ResponseEntity<>(teacher, HttpStatus.CREATED);
 }
@@ -38,7 +39,7 @@ public TeacherController(TeacherService teacherService) {
 }
 
 @PatchMapping("/{id}")
-    public ResponseEntity<TeacherDTO> updateTeacher(@PathVariable Long id, @RequestBody TeacherDTO teacherDTO) {
+    public ResponseEntity<TeacherDTO> updateTeacher(@PathVariable Long id,@Valid @RequestBody TeacherDTO teacherDTO) {
     TeacherDTO teacher = teacherService.updateTeacher(id, teacherDTO);
     return new ResponseEntity<>(teacher, HttpStatus.ACCEPTED);
 

@@ -25,17 +25,28 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public SubjectResponseSharedDTO createSubject(SubjectDTO subject) {
+        Subject parentSub = subject.getParentId() != null
+                ? subjectRepository.findById(subject.getParentId())
+                .orElseThrow(() -> new EntityNotFoundException("Subject not found with id: " + subject.getParentId()))
+                : null;
+
         Subject savedSubject = subjectMapper.toSubject(subject);
-        subjectRepository.save(savedSubject);
-        return subjectMapper.toSubjectResponseSharedDTO(savedSubject);
+        savedSubject.setParent(parentSub);
+
+        return subjectMapper.toSubjectResponseSharedDTO(subjectRepository.save(savedSubject));
     }
+
 
     @Override
     public SubjectResponseDTO updateSubject(Long id, SubjectDTO subject) {
         Subject existedSubject = subjectRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Subject with id " + id + " not found"));
 
+        Subject parentSub = subjectRepository.findById(subject.getParentId())
+                .orElseThrow(() -> new EntityNotFoundException("Subject not found with id: " + subject.getParentId()));
+
         Subject updatedSubject = subjectMapper.toSubject(subject);
         updatedSubject.setId(id);
+        updatedSubject.setParent(parentSub);
         subjectRepository.save(updatedSubject);
 
         return subjectMapper.toSubjectResponseDTO(updatedSubject);

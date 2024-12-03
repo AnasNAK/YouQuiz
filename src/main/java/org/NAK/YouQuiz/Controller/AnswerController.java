@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.Controller;
 
+import jakarta.validation.Valid;
 import org.NAK.YouQuiz.DTO.Answer.AnswerDTO;
 import org.NAK.YouQuiz.DTO.Answer.AnswerResponseDTO;
 import org.NAK.YouQuiz.DTO.Answer.AnswerResponseSharedDTO;
@@ -21,7 +22,7 @@ public class AnswerController {
     }
 
     @PostMapping
-    public ResponseEntity<AnswerResponseSharedDTO> createAnswer(@RequestBody AnswerDTO answerDTO) {
+    public ResponseEntity<AnswerResponseSharedDTO> createAnswer(@Valid @RequestBody AnswerDTO answerDTO) {
         AnswerResponseSharedDTO answer = answerService.createAnswer(answerDTO);
         return new ResponseEntity<>(answer, HttpStatus.CREATED);
     }
@@ -39,7 +40,7 @@ public class AnswerController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<AnswerResponseDTO> updateAnswer(@PathVariable Long id, @RequestBody AnswerDTO answerDTO) {
+    public ResponseEntity<AnswerResponseDTO> updateAnswer(@PathVariable Long id,@Valid @RequestBody AnswerDTO answerDTO) {
         AnswerResponseDTO answer = answerService.updateAnswer(id, answerDTO);
         return new ResponseEntity<>(answer, HttpStatus.ACCEPTED);
     }

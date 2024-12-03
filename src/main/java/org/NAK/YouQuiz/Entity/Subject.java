@@ -22,11 +22,14 @@ public class Subject {
     @Column(name = "title")
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
     private Subject parent;
 
-    @OneToMany(mappedBy = "subject" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "subject" ,fetch = FetchType.EAGER)
     private List<Question> questions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "parent")
+    private List<Subject> subSubjects = new ArrayList<>();
 
 }

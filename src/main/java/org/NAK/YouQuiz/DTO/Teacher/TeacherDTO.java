@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.DTO.Teacher;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,6 +16,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class TeacherDTO extends UserDTO {
 
+    @NotBlank(message = "you need to add a specialty")
     private String specialty;
 
     private List<QuizResponseSharedDTO> quizzes;

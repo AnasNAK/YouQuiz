@@ -13,5 +13,5 @@ public class SubjectResponseSharedDTO {
 
     private String title;
 
-    private SubjectResponseSharedDTO parent;
+
 }

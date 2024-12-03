@@ -1,9 +1,7 @@
 package org.NAK.YouQuiz.DTO.Student;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseSharedDTO;
 import org.NAK.YouQuiz.DTO.User.UserDTO;
 
@@ -15,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class StudentDTO extends UserDTO {
+    @NotNull(message = "you need to add a register date ")
     private LocalDate registerDate;
     private List<AssignmentQuizResponseSharedDTO> assignmentQuizzes;
 }

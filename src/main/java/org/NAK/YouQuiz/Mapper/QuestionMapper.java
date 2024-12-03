@@ -9,7 +9,7 @@ import org.NAK.YouQuiz.Entity.Question;
 import org.NAK.YouQuiz.Entity.QuestionQuiz;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" , uses = {QuestionQuizMapper.class,LevelMapper.class,SubjectMapper.class})
+@Mapper(componentModel = "spring" , uses = {LevelMapper.class,SubjectMapper.class})
 public interface QuestionMapper {
 
     Question toQuestion(QuestionDTO questionDTO);

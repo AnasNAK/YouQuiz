@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseSharedDTO;
+import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseDTO;
 import org.NAK.YouQuiz.DTO.QuestionQuiz.QuestionQuizResponseSharedDTO;
 import org.NAK.YouQuiz.DTO.Teacher.TeacherDTO;
 
@@ -24,5 +25,5 @@ public class QuizResponseDTO {
     private String instruction;
     private TeacherDTO teacher;
     private List<AssignmentQuizResponseSharedDTO> assignmentQuizzes ;
-    private List<QuestionQuizResponseSharedDTO> questionQuizzes;
+    private List<QuestionQuizResponseDTO> questionQuizzes;
 }
