@@ -7,10 +7,12 @@ import org.NAK.YouQuiz.Entity.Answer;
 import org.NAK.YouQuiz.Entity.AnswerValidation;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring" ,uses = {AnswerMapper.class,QuestionMapper.class, AssignmentQuizMapper.class})
+@Mapper(componentModel = "spring", uses = {AnswerMapper.class, QuestionMapper.class, AssignmentQuizMapper.class})
 public interface AnswerValidationMapper {
 
     AnswerValidation toAnswerValidation(AnswerValidationDTO answerValidationDTO);
+
     AnswerValidationResponseDTO toAnswerValidationResponseDTO(AnswerValidation answerValidation);
+
     AnswerValidationResponseSharedDTO toAnswerValidationResponseSharedDTO(AnswerValidation answerValidation);
 }

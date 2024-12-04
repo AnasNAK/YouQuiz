@@ -7,13 +7,18 @@ import org.NAK.YouQuiz.Entity.AnswerQuestion;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring" ,uses = {QuestionMapper.class , AnswerMapper.class})
+@Mapper(componentModel = "spring", uses = {QuestionMapper.class, AnswerMapper.class})
 public interface AnswerQuestionMapper {
-    @Mapping(target = "id.questionId" ,source = "questionId")
-    @Mapping(target = "id.answerId" ,source = "answerId")
-    @Mapping(target = "question.id" ,source = "questionId")
-    @Mapping(target = "answer.id",source="answerId")
+    @Mapping(target = "id.questionId", source = "questionId")
+    @Mapping(target = "id.answerId", source = "answerId")
+    @Mapping(target = "question.id", source = "questionId")
+    @Mapping(target = "answer.id", source = "answerId")
     AnswerQuestion toAnswerQuestion(AnswerQuestionDTO answerQuestionDTO);
+
+
     AnswerQuestionResponseDTO toAnswerQuestionResponseDTO(AnswerQuestion answerQuestion);
+
+    @Mapping(target = "questionId" ,source="question.id")
+//    @Mapping(target = "answerId" ,source="answer.id")
     AnswerQuestionResponseSharedDTO toAnswerQuestionResponseSharedDTO(AnswerQuestion answerQuestion);
 }

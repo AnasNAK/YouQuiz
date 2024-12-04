@@ -5,10 +5,13 @@ import org.NAK.YouQuiz.DTO.Answer.AnswerResponseDTO;
 import org.NAK.YouQuiz.DTO.Answer.AnswerResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Answer;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring" )
+@Mapper(componentModel = "spring")
 public interface AnswerMapper {
     Answer toAnswer(AnswerDTO answerDTO);
+
     AnswerResponseSharedDTO toAnswerResponseSharedDTO(Answer answer);
+
     AnswerResponseDTO toAnswerResponseDTO(Answer answer);
 }

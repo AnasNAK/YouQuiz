@@ -8,6 +8,7 @@ import org.NAK.YouQuiz.DTO.AssignmentQuiz.AssignmentQuizResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.AssignmentQuiz;
 import org.NAK.YouQuiz.Entity.Quiz;
 import org.NAK.YouQuiz.Entity.Student;
+import org.NAK.YouQuiz.Exception.MaxAttemptException;
 import org.NAK.YouQuiz.Mapper.AssignmentQuizMapper;
 import org.NAK.YouQuiz.Repository.AssignmentQuizRepository;
 import org.NAK.YouQuiz.Service.Contract.AssignmentQuizService;
@@ -32,6 +33,12 @@ public class AssignmentQuizServiceImpl implements AssignmentQuizService {
         Student student = studentService.getStudentEntityById(assignmentQuizDTO.getStudentId());
 
         Quiz quiz = quizService.getQuizEntityById(assignmentQuizDTO.getQuizId());
+
+        int maxAttempts = quiz.getMaxAttempts();
+
+        if (maxAttempts == assignmentQuizRepository.countByQuizIdAndStudentId(assignmentQuizDTO.getQuizId() ,assignmentQuizDTO.getStudentId())) {
+            throw new MaxAttemptException(assignmentQuizDTO.getQuizId(), maxAttempts , assignmentQuizDTO.getStudentId());
+        }
 
         AssignmentQuiz assignmentQuiz = assignmentQuizMapper.toAssignmentQuiz(assignmentQuizDTO);
         assignmentQuiz.setStudent(student);
@@ -91,5 +98,11 @@ public class AssignmentQuizServiceImpl implements AssignmentQuizService {
     public AssignmentQuiz getAssignmentQuizEntityById(Long id) {
         return assignmentQuizRepository.findById(id)
                 .orElseThrow(()->new EntityNotFoundException("assignment with id :"+id+ "not found "));
+    }
+
+    @Override
+    public AssignmentQuiz save(AssignmentQuiz assignmentQuiz) {
+        return assignmentQuizRepository.save(assignmentQuiz);
+
     }
 }

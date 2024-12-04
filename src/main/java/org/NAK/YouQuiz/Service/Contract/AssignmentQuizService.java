@@ -16,4 +16,5 @@ public interface AssignmentQuizService {
     void deleteAssignmentQuiz(Long id);
     List<AssignmentQuizResponseDTO> getAssignmentQuizzes();
     AssignmentQuiz getAssignmentQuizEntityById(Long id);
+    AssignmentQuiz save(AssignmentQuiz assignmentQuiz);
 }

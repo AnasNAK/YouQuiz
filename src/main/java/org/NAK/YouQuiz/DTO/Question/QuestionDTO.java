@@ -1,5 +1,6 @@
 package org.NAK.YouQuiz.DTO.Question;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,23 +14,25 @@ import org.NAK.YouQuiz.Enum.QuestionType;
 @AllArgsConstructor
 public class QuestionDTO {
 
-    @NotBlank(message = "you need to add a question description")
+    @NotBlank(message = "You need to add a question description.")
     private String questionDesc;
 
-    @NotNull(message = "you need to add the number of answers")
+    @Min(value = 1, message = "The number of answers must be at least 1.")
     private int answers;
 
-    @NotNull(message = "you need to add the number of the correct answers")
+    @Min(value = 1, message = "The number of correct answers must be at least 1.")
     private int correctAnswers;
 
-    @NotBlank(message = "you need to add a question")
+    @NotNull(message = "You need to add a question type.")
     private QuestionType questionType;
 
-    @NotNull(message = "you need to add a levelId")
+    @NotNull(message = "You need to add a levelId.")
     private Long levelId;
 
-    @NotNull(message = "you need to add a subjectId")
+    @NotNull(message = "You need to add a subjectId.")
     private Long subjectId;
+
+
 
 
 }

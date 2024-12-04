@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AssignmentQuizRepository extends JpaRepository<AssignmentQuiz, Long> {
+
+    int countByQuizIdAndStudentId(Long quizId, Long studentId);
 }

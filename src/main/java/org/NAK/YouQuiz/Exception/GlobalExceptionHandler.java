@@ -1,6 +1,4 @@
 package org.NAK.YouQuiz.Exception;
-
-
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import org.NAK.YouQuiz.DTO.ErrorResponseDTO;
@@ -16,6 +14,66 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ExistAnswerValidatioException.class)
+    public ResponseEntity<ErrorResponseDTO> handleExistAnswerValidatioException(ExistAnswerValidatioException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MaxAnswerQuestion.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxAnswerQuestion(MaxAnswerQuestion ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ValidDateException.class)
+    public ResponseEntity<ErrorResponseDTO> handleValidDateException(ValidDateException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SingleAnswerException.class)
+    public ResponseEntity<ErrorResponseDTO> handleSingleAnswerException(SingleAnswerException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MaxWrongAnswers.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxWrongAnswers(MaxWrongAnswers ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MaxCorrectAnswer.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxCorrectAnswer(MaxCorrectAnswer ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PointsException.class)
+    public ResponseEntity<ErrorResponseDTO> handlePointsException(PointsException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ExistQuestionQuizException.class)
+    public ResponseEntity<ErrorResponseDTO> handleSubjectQuestionException(ExistQuestionQuizException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SubjectQuestionException.class)
+    public ResponseEntity<ErrorResponseDTO> handleSubjectQuestionException(SubjectQuestionException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MaxAttemptException.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxAttemptException(MaxAttemptException ex) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("BAD_REQUEST", ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponseDTO> handleEntityNotFound(EntityNotFoundException ex) {

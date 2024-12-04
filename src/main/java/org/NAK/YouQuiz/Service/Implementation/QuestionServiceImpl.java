@@ -8,6 +8,9 @@ import org.NAK.YouQuiz.DTO.Question.QuestionResponseSharedDTO;
 import org.NAK.YouQuiz.Entity.Level;
 import org.NAK.YouQuiz.Entity.Question;
 import org.NAK.YouQuiz.Entity.Subject;
+import org.NAK.YouQuiz.Enum.QuestionType;
+import org.NAK.YouQuiz.Exception.SingleAnswerException;
+import org.NAK.YouQuiz.Exception.SubjectQuestionException;
 import org.NAK.YouQuiz.Mapper.AnswerMapper;
 import org.NAK.YouQuiz.Mapper.QuestionMapper;
 import org.NAK.YouQuiz.Repository.QuestionRepository;
@@ -38,6 +41,14 @@ public class QuestionServiceImpl implements QuestionService {
 
         Subject existedSubject = subjectService.getSubjectEntityById(questionDTO.getSubjectId());
 
+        if (existedSubject.getParent() == null) {
+            throw new SubjectQuestionException(existedSubject.getId());
+        }
+
+        if (QuestionType.SINGLE.equals(questionDTO.getQuestionType()) && questionDTO.getCorrectAnswers() > 1) {
+            throw new SingleAnswerException();
+        }
+
         Question savedQuestion = questionMapper.toQuestion(questionDTO);
 
         savedQuestion.setLevel(existedLevel);
@@ -48,8 +59,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public QuestionResponseDTO updateQuestion(Long id,QuestionDTO questionDTO) {
-        Question existedQuestion = questionRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Question not found with id " + id));
+    public QuestionResponseDTO updateQuestion(Long id, QuestionDTO questionDTO) {
+        Question existedQuestion = questionRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Question not found with id " + id));
 
         Level existedLevel = levelService.getLevelEntityById(questionDTO.getLevelId());
 
@@ -79,7 +90,7 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionResponseDTO getQuestion(Long id) {
         return questionRepository.findById(id)
                 .map(questionMapper::tooQuestionResponseDTO)
-                .orElseThrow(()->new EntityNotFoundException("Question not found with id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Question not found with id " + id));
     }
 
     @Override
@@ -93,6 +104,6 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Question getQuestionEntityByID(Long id) {
         return questionRepository.findById(id)
-                .orElseThrow(()->new EntityNotFoundException("Question not found with id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Question not found with id " + id));
     }
 }
